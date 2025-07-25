@@ -26,6 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'HTTP-Referer': 'http://localhost:3000',
         'X-Title': 'Phozzy Blogs',
       },
+      
       body: JSON.stringify({
         model,
         messages: [{ role: 'user', content: 'Hello,World!' }],
@@ -52,3 +53,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: 'Failed to generate response' });
   }
 }}
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', { ... });
+console.log('OpenRouter response status:', response.status);
+if (!response.ok) {
+  const errorText = await response.text();
+  console.error('OpenRouter error:', errorText);
+  return res.status(500).json({ error: errorText });
+}
