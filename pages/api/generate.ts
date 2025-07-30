@@ -22,8 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
 
       body: JSON.stringify({
-        model: 'deepseek/deepseek-chat-v3-0324',
-        messages: [{ role: 'user', content: 'Hello,World!' }],
+        model: 'deepseek/deepseek-chat-v3-0324:free',
+        messages: [{ role: 'user', content: prompt }],
         max_tokens: 512,
         temperature: 0.7,
       }),
