@@ -9,10 +9,15 @@ export default function NewPost() {
 
     const generatePost = async () => {
         setLoading(true)
-        const res = await axios.post('/api/generate', { prompt })
-        setResult(res.data.result.trim())
-        setLoading(false)
-}
+        try {
+            const res = await axios.post('/api/generate', { prompt })
+            setResult(res.data.result.trim())
+        } catch (error) {
+            console.error('Error generating post', error)
+            alert('Failed to generate content. Please try again')
+        } finally {setLoading(false)
+        }
+    }
 
     return (
         <div className="p-4">
