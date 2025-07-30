@@ -5,18 +5,18 @@ import { supabase } from '../lib/supabase'
 import { useRouter } from 'next/router'
 
 export default function LoginPage() {
-    // Login state
+    {/* Login state */}
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
 
-    // Register state
+    {/* Register state*/}
     const [registerEmail, setRegisterEmail] = useState('')
     const [registerPassword, setRegisterPassword] = useState('')
     const [registerLoading, setRegisterLoading] = useState(false)
     const router = useRouter()
 
-    // Login handler
+    {/* Login handler */}
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
@@ -57,7 +57,7 @@ export default function LoginPage() {
     return (
         <div className='max-w-md mx-auto mt-10 p-6 border rounded shadow'>
 
-            // Login Form
+            {/* Login Form */}
             <div className='p-6 border rounded shadow mb-6'>
                 <h1 className='text-2xl font-bold'>Login</h1>
                 <form onSubmit={handleLogin}>
@@ -78,7 +78,7 @@ export default function LoginPage() {
                    /> 
                 <button
                     type='submit'
-                    className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+                    className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700 transition"
                     disabled={loading}
                 >
                     {loading ? 'Logging in...' : 'Login'}
@@ -86,7 +86,7 @@ export default function LoginPage() {
             </form>
         </div>
 
-        // Register Form
+       {/* Register Form */}
         <div className='p-6 border rounded shadow'>
             <h2 className='text-xl font-bold mb-4'>Register</h2>
             <form onSubmit={handleRegister}>
@@ -107,7 +107,7 @@ export default function LoginPage() {
             
             <button
                 type='submit'
-                className="bg-green-600 text-white px-4 py-2 rounded w-full"
+                className="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700 transition"
                 disabled={registerLoading}
             >
                 {registerLoading ? 'Registering...' : 'Register'}

@@ -21,7 +21,8 @@ export default function NewPost() {
 
     return (
         <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Create New Post</h1>
+            <h1 className="text-2xl font-bold mb-4">Welcome to Phozzy Blogs🐾✨</h1>
+            <h2 className="text-xl mb-2">Generate a New Post</h2>
             <textarea 
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
