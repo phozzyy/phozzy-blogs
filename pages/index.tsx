@@ -1,4 +1,6 @@
 import { supabase } from '../lib/supabase'
+import { GetServerSideProps } from 'next'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import ArticleCard from '../components/ArticleCard'
 
 
@@ -11,8 +13,24 @@ type Post = {
 type HomeProps = {
   posts: Post[]
 }
-export async function getStaticProps() {
-  const { data: posts } = await supabase.from('posts').select('*')
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const supabaseServer = createServerSupabaseClient(ctx)
+  const {
+    data: { session },
+  } = await supabaseServer.auth.getSession()
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  const { data: posts } = await supabaseServer.from('posts').select('*')
+
   return {
     props: {
       posts: posts || [],
