@@ -1,4 +1,3 @@
-import { supabase } from '../lib/supabase'
 import { GetServerSideProps } from 'next'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import ArticleCard from '../components/ArticleCard'
